@@ -22,7 +22,7 @@ namespace SimuladorColmena
             workers = new Worker[4];
             CreateWorkers();
 
-            queen = new Queen(workers);
+            queen = new Queen(workers, 275);
         }
 
         private void Form_Load(object sender, EventArgs e) { }
@@ -43,10 +43,10 @@ namespace SimuladorColmena
 
         private void CreateWorkers()
         {
-            workers[0] = new Worker(new string[] { "Nectar collector", "Honey manufacturing" });
-            workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" });
-            workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" });
-            workers[3] = new Worker(new string[] { "Baby bee tutoring", "Egg care", "Hive maintenance", "Honey manufacturing", "Nectar collector", "Sting patrol" });
+            workers[0] = new Worker(new string[] { "Nectar collector", "Honey manufacturing" }, 175);
+            workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" }, 114);
+            workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" }, 149);
+            workers[3] = new Worker(new string[] { "Baby bee tutoring", "Egg care", "Hive maintenance", "Honey manufacturing", "Nectar collector", "Sting patrol" }, 155);
         }
     }
 }
