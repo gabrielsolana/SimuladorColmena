@@ -11,7 +11,7 @@
             Weight = weight;
         }
 
-        public double HoneyConsumptionRate()
+        public virtual double HoneyConsumptionRate()
         {
             return Weight * HoneyUnitsConsumedPerMg;
         }

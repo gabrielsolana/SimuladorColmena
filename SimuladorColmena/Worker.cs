@@ -6,6 +6,8 @@
         private int shiftsToWork;
         private int shiftsWorked;
 
+        private const double honeyUnitsPerShiftWorked = 0.65;
+
         public string CurrentJob { get; private set; }
 
         public int ShiftsLeft
@@ -38,12 +40,25 @@
 
         public bool DidYouFinish()
         {
-            shiftsWorked++;
-            if (ShiftsLeft != 0) return false;
+            
+            if (ShiftsLeft != 0)
+            {
+                shiftsWorked++;
+                return false;
+            }
+
             CurrentJob = string.Empty;
             shiftsToWork = 0;
             shiftsWorked = 0;
             return true;
+        }
+
+        public override double HoneyConsumptionRate()
+        {
+            var consumedHoney = base.HoneyConsumptionRate();
+            consumedHoney += shiftsWorked * honeyUnitsPerShiftWorked; 
+
+            return consumedHoney;
         }
     }
 

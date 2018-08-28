@@ -8,6 +8,8 @@ namespace SimuladorColmena
         private Worker[] workers;
         private int shiftNumber;
 
+        private double honeyConsumptionInThisShift;
+
         public Queen(Worker[] workers, double weight) : base(weight)
         {
             this.workers = workers;
@@ -29,18 +31,20 @@ namespace SimuladorColmena
         public string WorkTheNextShift()
         {
             shiftNumber++;
-            
+            honeyConsumptionInThisShift = this.HoneyConsumptionRate();
+
             var report = $"Report for Shift #{shiftNumber}:\r\n";
 
             for (var i = 0; i < workers.Length; i++)
             {
                 var worker = workers[i];
-                
+
+
                 if (worker.DidYouFinish())
                 {
                     report += $"Worker #{i + 1} finished the job. Therefore ";
                 }
-                
+
                 if (string.IsNullOrWhiteSpace(worker.CurrentJob))
                 {
                     report += $"Worker #{i + 1} está tocándose las pelotas.\r\n";
@@ -56,7 +60,11 @@ namespace SimuladorColmena
                         report += $"Worker #{i + 1} will be done with {worker.CurrentJob} after this shift.\r\n";
                     }
                 }
+
+                honeyConsumptionInThisShift += worker.HoneyConsumptionRate();
             }
+
+            report += $"Total honey consumed for the shift: {honeyConsumptionInThisShift} units\r\n";
 
             return report;
         }
