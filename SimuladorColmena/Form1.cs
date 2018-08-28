@@ -23,6 +23,8 @@ namespace SimuladorColmena
             CreateWorkers();
 
             queen = new Queen(workers, 275);
+
+            workSelectorComboBox.SelectedIndex = 0;
         }
 
         private void Form_Load(object sender, EventArgs e) { }
@@ -47,6 +49,11 @@ namespace SimuladorColmena
             workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" }, 114);
             workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" }, 149);
             workers[3] = new Worker(new string[] { "Baby bee tutoring", "Egg care", "Hive maintenance", "Honey manufacturing", "Nectar collector", "Sting patrol" }, 155);
+        }
+
+        private void clearReportWindowButton_Click(object sender, EventArgs e)
+        {
+            reportTextBox.ResetText();
         }
     }
 }
