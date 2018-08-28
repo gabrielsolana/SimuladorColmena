@@ -1,6 +1,6 @@
 ﻿namespace SimuladorColmena
 {
-    public class Worker
+    public class Worker : Bee
     {
         private string[] jobsICanDo;
         private int shiftsToWork;
@@ -13,9 +13,10 @@
             get { return shiftsToWork - shiftsWorked; }
         }
 
-        public Worker(string[] jobsICanDo)
+        public Worker(string[] jobsICanDo, double weight) : base(weight)
         {
             this.jobsICanDo = jobsICanDo;
+            this.Weight = weight;
         }
 
         public bool DoThisJob(string jobToDo, int shifts)

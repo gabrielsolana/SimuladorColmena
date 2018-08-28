@@ -3,29 +3,20 @@ using System.Drawing.Imaging;
 
 namespace SimuladorColmena
 {
-    public class Queen
+    public class Queen : Bee
     {
         private Worker[] workers;
         private int shiftNumber;
 
-        public Queen(Worker[] workers)
+        public Queen(Worker[] workers, double weight) : base(weight)
         {
             this.workers = workers;
+            this.Weight = weight;
             shiftNumber = 0;
         }
 
         public bool AssignWork(string job, int numberOfShifts)
         {
-            //var workAccepted = false;
-            //foreach (var worker in workers)
-            //{
-            //    workAccepted = worker.DoThisJob(job, numberOfShifts);
-            //    if (workAccepted)
-            //        break;
-            //}
-
-            //return workAccepted;
-
             foreach (var worker in workers)
             {
                 if (worker.DoThisJob(job, numberOfShifts))
