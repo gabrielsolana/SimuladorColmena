@@ -34,12 +34,10 @@ namespace SimuladorColmena
             honeyConsumptionInThisShift = this.HoneyConsumptionRate();
 
             var report = $"Report for Shift #{shiftNumber}:\r\n";
-
             for (var i = 0; i < workers.Length; i++)
             {
                 var worker = workers[i];
-
-
+                
                 if (worker.DidYouFinish())
                 {
                     report += $"Worker #{i + 1} finished the job. Therefore ";
@@ -63,6 +61,7 @@ namespace SimuladorColmena
 
                 honeyConsumptionInThisShift += worker.HoneyConsumptionRate();
             }
+
 
             report += $"Total honey consumed for the shift: {honeyConsumptionInThisShift} units\r\n";
 

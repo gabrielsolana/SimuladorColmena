@@ -1,4 +1,6 @@
-﻿namespace SimuladorColmena
+﻿using System;
+
+namespace SimuladorColmena
 {
     public class Worker : Bee
     {
@@ -10,10 +12,7 @@
 
         public string CurrentJob { get; private set; }
 
-        public int ShiftsLeft
-        {
-            get { return shiftsToWork - shiftsWorked; }
-        }
+        public int ShiftsLeft => shiftsToWork - shiftsWorked;
 
         public Worker(string[] jobsICanDo, double weight) : base(weight)
         {
@@ -40,17 +39,19 @@
 
         public bool DidYouFinish()
         {
-            
-            if (ShiftsLeft != 0)
-            {
-                shiftsWorked++;
+            if (String.IsNullOrEmpty(CurrentJob))
                 return false;
-            }
+            shiftsWorked++;
 
-            CurrentJob = string.Empty;
-            shiftsToWork = 0;
-            shiftsWorked = 0;
-            return true;
+            if (ShiftsLeft == 0)
+            {
+                CurrentJob = string.Empty;
+                shiftsToWork = 0;
+                shiftsWorked = 0;
+                return true;
+            }
+            else
+                return false;
         }
 
         public override double HoneyConsumptionRate()
